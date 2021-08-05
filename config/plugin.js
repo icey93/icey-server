@@ -14,8 +14,12 @@ module.exports = {
     enable: true,
     package: 'egg-mysql',
   },
-  jwt: {
+  jwt: {// 验证token
     enable: true,
     package: 'egg-jwt',
+  },
+  cors: {// 跨域
+    enable: true,
+    package: 'egg-cors',
   },
 };

@@ -112,7 +112,7 @@ class UserController extends Controller {
   async editUserInfo() {
     const { ctx, app } = this;
     // 通过 post 请求，在请求体中获取签名字段 signature
-    const { signature = '' } = ctx.request.body;
+    const { signature = '', avatar = '' } = ctx.request.body;
 
     try {
       let user_id;
@@ -127,15 +127,17 @@ class UserController extends Controller {
       const result = await ctx.service.user.editUserInfo({
         ...userInfo,
         signature,
+        avatar,
       });
 
       ctx.body = {
         code: 200,
-        msg: '请求成功',
+        msg: '修改成功',
         data: {
           id: user_id,
           signature,
           username: userInfo.username,
+          avatar,
         },
       };
     } catch (error) {
